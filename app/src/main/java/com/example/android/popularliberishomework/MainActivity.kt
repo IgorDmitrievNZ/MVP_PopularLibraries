@@ -21,9 +21,9 @@ class MainActivity : AppCompatActivity(), MainView {
                 R.id.btn_counter1 -> MainPresenter.Buttons.BUTTON1
                 R.id.btn_counter2 -> MainPresenter.Buttons.BUTTON2
                 R.id.btn_counter3 -> MainPresenter.Buttons.BUTTON3
-                else -> IllegalArgumentException("Something went wrong mate (")
+                else -> throw IllegalArgumentException("Something went wrong mate (")
             }
-            presenter.counterClick(current as MainPresenter.Buttons)
+            presenter.counterClick(current)
         }
 
         binding.btnCounter1.setOnClickListener(listener)
