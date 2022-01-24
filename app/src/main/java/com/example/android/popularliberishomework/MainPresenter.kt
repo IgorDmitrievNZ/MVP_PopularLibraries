@@ -1,25 +1,28 @@
 package com.example.android.popularliberishomework
 
 
-class MainPresenter(val view: MainView) {
-    val model = CountersModel()
+class MainPresenter(private val view: MainView) {
+    private val model = CountersModel()
 
-    // TODO HOME WORK1 Архитектурная ошибка. В качестве практического задания -- исправить
-    //Architectural mistake. As a practical task, required to fix it
+    enum class Buttons {
+        BUTTON1,
+        BUTTON2,
+        BUTTON3,
+    }
 
-    fun counterClick(id: Int){
-        when(id){
-            R.id.btn_counter1 -> {
+    fun counterClick(id: Buttons) {
+        when (id) {
+            Buttons.BUTTON1 -> {
                 val nextValue = model.next(0)
-                view.setButtonText(0, nextValue.toString())
+                view.setButton1Text(nextValue.toString())
             }
-            R.id.btn_counter2 -> {
+            Buttons.BUTTON2 -> {
                 val nextValue = model.next(1)
-                view.setButtonText(1, nextValue.toString())
+                view.setButton2Text(nextValue.toString())
             }
-            R.id.btn_counter3 -> {
+            Buttons.BUTTON3 -> {
                 val nextValue = model.next(2)
-                view.setButtonText(2, nextValue.toString())
+                view.setButton3Text(nextValue.toString())
             }
         }
     }
